@@ -1,3 +1,5 @@
+#!/bin/bash
+
 if test ! $(which zsh)
 then
 	sudo pacman -S zsh

@@ -1,3 +1,6 @@
 #!/bin/bash
 
-sudo pacman -S tmux
+if test ! $(which tmux)
+then
+	sudo pacman -S tmux
+fi
