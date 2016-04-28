@@ -112,7 +112,10 @@ install_dotfiles () {
   done
 }
 
+install
 install_dotfiles
+
+
 
 echo ''
 echo '  All installed!'
