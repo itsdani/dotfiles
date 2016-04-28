@@ -1,6 +1,7 @@
 #!/bin/sh
 
-pacman -S git zsh vim
+sudo pacman -Sy
+sudo pacman -S git zsh vim
 
 chsh -s /usr/bin/zsh
 
