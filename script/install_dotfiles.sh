@@ -112,10 +112,9 @@ install_dotfiles () {
   done
 }
 
-install
+sudo pacman -Sy
+find . -name install.sh | while read installer ; do sh -c "${installer}" ; done
 install_dotfiles
-
-
 
 echo ''
 echo '  All installed!'
