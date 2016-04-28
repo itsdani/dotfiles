@@ -4,5 +4,6 @@ sudo pacman -Sy \
 wget 
 
 
-yaourt -S arc-theme
+yaourt -s the_platinum_searcher
+yaourt -S gtk-theme-arc
 yaourt -S numix-icon-theme-git
