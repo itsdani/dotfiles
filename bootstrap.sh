@@ -4,6 +4,7 @@ pacman -S git zsh vim
 
 chsh -s /usr/bin/zsh
 
-install_dotfiles
+git clone https://github.com/doczir/dotfiles.git ~/.dotfiles
+cd ~/.dotfiles
 
-zsh
+#install_dotfiles
