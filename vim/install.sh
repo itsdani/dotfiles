@@ -2,5 +2,5 @@
 
 if test ! $(which nvim)
 then
-	sudo pacman -S neovim
+	sudo pacman --noconfirm -S neovim
 fi

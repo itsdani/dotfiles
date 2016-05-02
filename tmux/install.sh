@@ -2,5 +2,5 @@
 
 if test ! $(which tmux)
 then
-	sudo pacman -S tmux
+	sudo pacman --noconfirm -S tmux
 fi

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-sudo pacman -Sy wget 
+sudo pacman --noconfirm -S wget 
 
 
 yaourt -S the_platinum_searcher

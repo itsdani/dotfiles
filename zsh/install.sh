@@ -2,7 +2,7 @@
 
 if test ! $(which zsh)
 then
-	sudo pacman -S zsh
+	sudo pacman --noconfirm -S zsh
 fi
 
 CD=$(pwd)
