@@ -3,6 +3,7 @@
 if test ! $(which zsh)
 then
 	sudo pacman --noconfirm -S zsh
+	curl -sL git.io/zplug | zsh
 fi
 
 CD=$(pwd)
