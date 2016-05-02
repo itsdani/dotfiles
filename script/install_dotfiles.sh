@@ -100,6 +100,14 @@ link_file () {
   fi
 }
 
+install () {
+  local inst=$1
+
+  ret=sh -c "${inst}"
+
+  success "installed $(dirname '$inst')"
+}
+
 install_dotfiles () {
   info 'installing dotfiles'
 
@@ -109,6 +117,15 @@ install_dotfiles () {
   do
     dst="$HOME/.$(basename "${src%.*}")"
     link_file "$src" "$dst"
+  done
+}
+
+run_installers () }
+  info 'running installers'
+
+  for inst in $(find -H "$DOTFILES_ROOT" -maxdepth 2 -name 'install.sh' -not -path '*.git*')
+  do
+    install inst
   done
 }
 
