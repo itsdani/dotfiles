@@ -1,17 +1,17 @@
 source ~/.zplug/zplug
 
 # Oh-My-Zsh
-zplug "plugins/git",   from:oh-my-zsh, if:"which git"
-zplug "plugins/archlinux",   from:oh-my-zsh, if:"which pacman"
-zplug "plugins/mvn",   from:oh-my-zsh, if:"which mvn"
+zplug "plugins/git",   from:oh-my-zsh, if:"which git", nice:10
+zplug "plugins/archlinux",   from:oh-my-zsh, if:"which pacman", nice:10
+zplug "plugins/mvn",   from:oh-my-zsh, if:"which mvn", nice:10
 zplug "plugins/command-not-found",   from:oh-my-zsh
 
 zplug "rupa/z", use:z.sh
 
 zplug "zsh-users/zsh-history-substring-search"
-zplug "zsh-users/zsh-completions"
+zplug "zsh-users/zsh-completions", nice:10
 zplug "zsh-users/zsh-autosuggestions", use:zsh-autosuggestions.zsh
-# zplug "zsh-users/zsh-syntax-highlighting", of:zsh-syntax-highlighting.zsh
+zplug "zsh-users/zsh-syntax-highlighting", of:zsh-syntax-highlighting.zsh
 
 
 # Theme
