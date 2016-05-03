@@ -118,7 +118,7 @@ install () {
 
   ret=$(sh -c $inst >> install.log 2>&1)
 
-  success "installed $(dirname '$prog')"
+  success "installed $prog"
 }
 
 install_dotfiles () {

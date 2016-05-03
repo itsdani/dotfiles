@@ -8,7 +8,7 @@ fi
 
 CD=$(pwd)
 
-ZPLUG_HOME=$HOME/.zplug
+set ZPLUG_HOME=$HOME/.zplug
 curl -sL git.io/zplug | zsh
 
 cd /tmp
