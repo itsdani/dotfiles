@@ -145,7 +145,7 @@ run_installers () {
 sudo pacman -Sy
 run_installers
 install_dotfiles
-script/run_zsh
+zsh
 
 echo ''
 echo '  All installed!'
