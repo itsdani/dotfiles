@@ -118,6 +118,7 @@ install () {
 
   ret=$(sh -c $inst >> install.log 2>&1)
 
+  echo -en "\e[1A"
   success "installed $prog"
 }
 
