@@ -1,11 +1,11 @@
 #!/usr/bin/expect -f
 
 spawn sh -c ./install.sh
-expect "(YES to continue)"
-send "YES\r"
+expect {
+	default {}
+	"(YES to continue)" { send "YES\r" }
+}
 expect "#? "
 send "1\r"
 expect "(YES to continue)"
 send "YES\r"
-expect "$ "
-send "exit\r"

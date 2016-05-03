@@ -1,0 +1,8 @@
+#!/usr/bin/expect -f
+
+spawn zsh
+expect {
+	default {}
+	'Install? \\\[y/N\\\]:' {send "y\r"}
+}
+
