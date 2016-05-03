@@ -100,12 +100,25 @@ link_file () {
   fi
 }
 
+write_log_header () {
+  local prog=$1
+
+  echo "==============================" >> install.log
+  echo "     Installing $prog         " >> install.log
+  echo "==============================" >> install.log
+}
+
 install () {
   local inst=$1
+  local prog=$(basename $(dirname $inst))
 
-  ret=sh -c "${inst}"
+  info "installing $prog"
 
-  success "installed $(dirname '$inst')"
+  write_log_header $prog
+
+  ret=$(sh -c $inst >> install.log 2>&1)
+
+  success "installed $(dirname '$prog')"
 }
 
 install_dotfiles () {
@@ -120,17 +133,17 @@ install_dotfiles () {
   done
 }
 
-run_installers () }
+run_installers () {
   info 'running installers'
 
   for inst in $(find -H "$DOTFILES_ROOT" -maxdepth 2 -name 'install.sh' -not -path '*.git*')
   do
-    install inst
+    install $inst
   done
 }
 
 sudo pacman -Sy
-find . -name install.sh | while read installer ; do sh -c "${installer}" ; done
+run_installers
 install_dotfiles
 
 echo ''
