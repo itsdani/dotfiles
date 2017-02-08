@@ -9,7 +9,7 @@ fi
 CD=$(pwd)
 
 export ZPLUG_HOME="$HOME/.zplug"
-curl -sL git.io/zplug | zsh
+curl -sL zplug.sh/installer | zsh
 
 cd /tmp
 

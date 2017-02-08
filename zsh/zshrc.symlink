@@ -1,28 +1,59 @@
-source ~/.zplug/zplug
+# WARNING!!!! sourcing this file multiple times will cause the terminal to randomly crash... see https://github.com/zsh-users/zsh-autosuggestions/issues/84
 
-# Oh-My-Zsh
-zplug "plugins/ubuntu",   from:oh-my-zsh, if:"which apt", nice:10
-zplug "plugins/git",   from:oh-my-zsh, if:"which git", nice:10
-zplug "plugins/archlinux",   from:oh-my-zsh, if:"which pacman", nice:10
-zplug "plugins/mvn",   from:oh-my-zsh, if:"which mvn", nice:10
-zplug "plugins/command-not-found",   from:oh-my-zsh
+source $HOME/.zplug/init.zsh
 
-zplug "rupa/z", use:z.sh
+# use oh-my-zsh
+zplug lib/clipboard, from:oh-my-zsh
+zplug lib/compfix, from:oh-my-zsh
+zplug lib/completion, from:oh-my-zsh
+zplug lib/correction, from:oh-my-zsh
+zplug lib/diagnostics, from:oh-my-zsh
+zplug lib/directories, from:oh-my-zsh
+zplug "lib/functions", from:oh-my-zsh
+zplug lib/git, from:oh-my-zsh
+zplug lib/grep, from:oh-my-zsh
+zplug "lib/history", from:oh-my-zsh
+zplug lib/key-bindings, from:oh-my-zsh
+zplug lib/misc, from:oh-my-zsh
+zplug lib/nvm, from:oh-my-zsh
+zplug lib/prompt_info_functions, from:oh-my-zsh
+zplug lib/spectrum, from:oh-my-zsh
+zplug lib/termsupport, from:oh-my-zsh
+zplug lib/theme-and-appearance, from:oh-my-zsh
 
-zplug "zsh-users/zsh-history-substring-search"
-zplug "zsh-users/zsh-completions", nice:10
-zplug "zsh-users/zsh-autosuggestions", use:zsh-autosuggestions.zsh
-zplug "zsh-users/zsh-syntax-highlighting", use:zsh-syntax-highlighting.zsh
+zplug plugins/git, from:oh-my-zsh
+zplug plugins/pip, from:oh-my-zsh
+zplug plugins/archlinux, from:oh-my-zsh
+zplug plugins/command-not-found, from:oh-my-zsh
+zplug rupa/z, from:oh-my-zsh
 
+zplug djui/alias-tips
+zplug mafredri/zsh-async, from:github
 
-# Theme
-zplug "themes/robbyrussell", from:oh-my-zsh
+zplug zsh-users/zsh-history-substring-search
+zplug zsh-users/zsh-autosuggestions
+zplug zsh-users/zsh-syntax-highlighting, defer:2
 
+zplug sindresorhus/pure, use:pure.zsh, from:github, as:theme
+
+# Install plugins if there are plugins that have not been installed
 if ! zplug check --verbose; then
-	printf "Install? [y/N]: "
-	if read -q; then
-		echo; zplug install
-	fi
+    printf Install? [y/N]: 
+    if read -q; then
+        echo; zplug install
+    fi
 fi
 
-zplug load --verbose
+# Then, source plugins and add commands to $PATH
+zplug load
+
+if [[ $TERMINIX_ID ]]; then
+        source /etc/profile.d/vte.sh
+fi
+
+export PATH=$PATH:$HOME/.local/bin
+
+eval $(thefuck --alias)
+
+setopt correct
+zstyle ':completion:::::' completer _complete _approximate

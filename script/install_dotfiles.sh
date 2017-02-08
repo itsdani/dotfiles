@@ -46,7 +46,7 @@ link_file () {
 
       else
 
-        user "File already exists: $dst ($(basename "$src")), what do you want to do?\n\
+        user "File already exists: $dst ($(basename "$src")).\n\
         [s]kip, [S]kip all, [o]verwrite, [O]verwrite all, [b]ackup, [B]ackup all?"
         read -n 1 action
 
@@ -134,6 +134,18 @@ install_dotfiles () {
   done
 }
 
+install_configs () {
+  info 'installing configs'
+
+  local overwrite_all=false backup_all=false skip_all=false
+
+  for src in $(find -H "$DOTFILES_ROOT" -maxdepth 2 -name '*.config' -not -path '*.git*')
+  do
+    dst="$HOME/.config/$(basename "${src%.*}")"
+    link_file "$src" "$dst"
+  done
+}
+
 run_installers () {
   info 'running installers'
 
@@ -141,11 +153,13 @@ run_installers () {
   do
     install $inst
   done
+  success "finished installing"
 }
 
 sudo pacman -Sy
 run_installers
 install_dotfiles
+install_configs
 
 printf "${GREEN}"
 echo '                                                                                    '
