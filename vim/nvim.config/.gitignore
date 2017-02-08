@@ -1,1 +1,4 @@
-files
+files/*
+files/backup/*
+!files/backup
+!files/backup/.gitkeep

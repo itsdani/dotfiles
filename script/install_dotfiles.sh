@@ -153,7 +153,6 @@ run_installers () {
   do
     install $inst
   done
-  success "finished installing"
 }
 
 sudo pacman -Sy
