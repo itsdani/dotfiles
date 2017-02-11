@@ -18,7 +18,6 @@ if dein#load_state('/home/robert/.dein')
   call dein#add('Shougo/neosnippet.vim')
   call dein#add('Shougo/neosnippet-snippets')
 
-
   call dein#add('airblade/vim-gitgutter')
   call dein#add('tpope/vim-fugitive')
 
@@ -31,7 +30,7 @@ if dein#load_state('/home/robert/.dein')
   call dein#add('mbbill/undotree')
   call dein#add('junegunn/vim-peekaboo')
 
-  call dein#add('Valloric/YouCompleteMe')
+  call dein#add('Valloric/YouCompleteMe', {'merged': 0})
   call dein#add('rhysd/vim-clang-format')
   call dein#add('tpope/vim-commentary')
 
