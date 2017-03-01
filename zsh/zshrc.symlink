@@ -1,5 +1,8 @@
 # WARNING!!!! sourcing this file multiple times will cause the terminal to randomly crash... see https://github.com/zsh-users/zsh-autosuggestions/issues/84
 
+PROMPT_GEOMETRY_COLORIZE_SYMBOL=true
+PROMPT_GEOMETRY_COLORIZE_ROOT=true
+
 source $HOME/.zplug/init.zsh
 
 # use oh-my-zsh
@@ -34,7 +37,8 @@ zplug zsh-users/zsh-history-substring-search
 zplug zsh-users/zsh-autosuggestions
 zplug zsh-users/zsh-syntax-highlighting, defer:2
 
-zplug sindresorhus/pure, use:pure.zsh, from:github, as:theme
+zplug "frmendes/geometry"
+#zplug sindresorhus/pure, use:pure.zsh, from:github, as:theme
 
 # Install plugins if there are plugins that have not been installed
 if ! zplug check --verbose; then

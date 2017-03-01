@@ -1,3 +1,5 @@
+set -g default-terminal "screen-256color"
+
 # remap prefix from 'C-b' to 'C-space'
 unbind C-b
 set-option -g prefix C-space
@@ -26,9 +28,8 @@ bind -n C-Right swap-pane -D
 set -g mouse on
 
 # List of pluigins
-set -g @plugin 'tmux-plugins/tmp'
-set -g @plugin 'caiogondim/maglev' 
 set -g @plugin 'tmux-plugins/tpm'
+# set -g @plugin 'caiogondim/maglev' 
 set -g @plugin 'tmux-plugins/tmux-sensible'
 set -g @plugin 'tmux-plugins/tmux-resurrect'
 set -g @plugin 'tmux-plugins/tmux-continuum'
@@ -40,6 +41,25 @@ set -g @plugin 'tmux-plugins/tmux-battery'
 set -g @plugin 'tmux-plugins/tmux-cpu'
 
 run '~/.tmux/plugins/tpm/tpm'
+
+
+set-option -g status-fg white
+set-option -g status-bg default
+set-option -g status-attr default
+set-window-option -g window-status-fg "#666666"
+set-window-option -g window-status-bg default
+set-window-option -g window-status-attr default
+set-window-option -g window-status-current-fg red
+set-window-option -g window-status-current-bg default
+set-window-option -g window-status-current-attr default
+set-option -g message-fg white
+set-option -g message-bg default
+set-option -g message-attr default
+set -g status-left " "
+set -g status-justify left
+set -g window-status-format ' #(echo "#{pane_current_command}") '
+set -g window-status-current-format ' #(echo "#{pane_current_command}") '
+set -g status-right " "
 
 ######################
 ### DESIGN CHANGES ###
