@@ -3,7 +3,8 @@
 if test ! $(which zsh)
 then
 	sudo pacman --noconfirm -S zsh
-	curl -sL git.io/zplug | zsh
+	curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh| zsh
+
 fi
 
 CD=$(pwd)
