@@ -18,6 +18,8 @@ if dein#load_state('$HOME/.dein')
   call dein#add('Shougo/neosnippet.vim')
   call dein#add('Shougo/neosnippet-snippets')
 
+  call dein#add('chriskempson/base16-vim')
+
   call dein#add('airblade/vim-gitgutter')
   call dein#add('tpope/vim-fugitive')
 
@@ -33,6 +35,7 @@ if dein#load_state('$HOME/.dein')
   call dein#add('Valloric/YouCompleteMe', {'merged': 0})
   call dein#add('rhysd/vim-clang-format')
   call dein#add('tpope/vim-commentary')
+  call dein#add('purescript-contrib/purescript-vim')
 
   call dein#add('godlygeek/tabular')
   call dein#add('AndrewRadev/splitjoin.vim')
@@ -68,7 +71,10 @@ augroup END " }
 " ================================
 
 autocmd ColorScheme janah highlight Normal ctermbg=235
+"autocmd ColorScheme base16-eighties highlight Normal ctermbg=235
 colorscheme janah
+"set background=dark
+"colorscheme base16-eighties
 
 set autoindent
 set expandtab
@@ -83,6 +89,8 @@ set display     =lastline
 
 set showmode
 set showcmd
+
+set number
 
 set incsearch
 set hlsearch

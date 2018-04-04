@@ -2,7 +2,7 @@
 
 if test ! $(which nvim)
 then
-	sudo pacman --noconfirm -S neovim
+	brew install nvim
 fi
 
 if [ ! -d $HOME/.dein ]
