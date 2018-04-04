@@ -1,4 +1,6 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =2
+let g:netrw_dirhist_cnt =4
 let g:netrw_dirhist_1='/usr/share/nvim/runtime'
 let g:netrw_dirhist_2='/home/robert/Projects/Rust/mal/make'
+let g:netrw_dirhist_3='/Users/dsegesdi/git/ofxstatement-kh/.git'
+let g:netrw_dirhist_4='/Users/dsegesdi/git/pure-tech/output'
