@@ -32,8 +32,10 @@ if dein#load_state('$HOME/.dein')
   call dein#add('mbbill/undotree')
   call dein#add('junegunn/vim-peekaboo')
 
-  call dein#add('Valloric/YouCompleteMe', {'merged': 0})
-  call dein#add('rhysd/vim-clang-format')
+  call dein#add('ajmwagar/vim-deus')
+
+"  call dein#add('Valloric/YouCompleteMe', {'merged': 0})
+"  call dein#add('rhysd/vim-clang-format')
   call dein#add('tpope/vim-commentary')
   call dein#add('purescript-contrib/purescript-vim')
 
@@ -70,11 +72,26 @@ augroup END " }
 "           CONFIG
 " ================================
 
-autocmd ColorScheme janah highlight Normal ctermbg=235
+" janah
+":autocmd ColorScheme janah highlight Normal ctermbg=235
+"colorscheme janah
+
+" base16
 "autocmd ColorScheme base16-eighties highlight Normal ctermbg=235
-colorscheme janah
-"set background=dark
 "colorscheme base16-eighties
+
+
+" deus
+autocmd ColorScheme deus highlight Normal ctermbg=235
+set t_Co=256
+set termguicolors
+let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+set background=dark " Setting dark mode
+colorscheme deus
+let g:deus_termcolors=256
+
+
 
 set autoindent
 set expandtab
