@@ -1,82 +1,72 @@
-#gdate "+start: %s.%N"
-export ZPLUG_HOME=/usr/local/opt/zplug
-export ZPLUG_LOADFILE=$HOME/.packages.zsh
-export NVM_DIR='/usr/local/opt/nvm'
+# nix nix nix nix
+. /Users/dsegesdi/.nix-profile/etc/profile.d/nix.sh
 
-export GPG_TTY=$(tty)
-export PINENTRY_USER_DATA="USE_CURSES=1"
-
-source $ZPLUG_HOME/init.zsh
-#gdate "+zplug init: %s.%N"
-
-#zplug lib/clipboard, from:oh-my-zsh
-zplug lib/compfix, from:oh-my-zsh
-zplug lib/completion, from:oh-my-zsh
-#zplug lib/correction, from:oh-my-zsh
-#zplug lib/diagnostics, from:oh-my-zsh
-zplug lib/directories, from:oh-my-zsh
-zplug "lib/functions", from:oh-my-zsh
-zplug lib/git, from:oh-my-zsh
-#zplug lib/grep, from:oh-my-zsh
-zplug "lib/history", from:oh-my-zsh
-zplug lib/key-bindings, from:oh-my-zsh
-zplug lib/misc, from:oh-my-zsh
-zplug lib/nvm, from:oh-my-zsh
-#zplug lib/prompt_info_functions, from:oh-my-zsh
-zplug lib/spectrum, from:oh-my-zsh
-zplug lib/termsupport, from:oh-my-zsh
-zplug lib/theme-and-appearance, from:oh-my-zsh
-
-zplug plugins/git, from:oh-my-zsh
-zplug plugins/heroku, from:oh-my-zsh
-#zplug plugins/pip, from:oh-my-zsh
-#zplug plugins/command-not-found, from:oh-my-zsh
-zplug plugins/z, from:oh-my-zsh
-
-zplug djui/alias-tips
-#zplug mafredri/zsh-async, from:github
-
-#zplug zsh-users/zsh-history-substring-search
-zplug zsh-users/zsh-autosuggestions
-zplug zsh-users/zsh-syntax-highlighting, defer:2
-
-zplug "frmendes/geometry"
-# WARNING!!!! sourcing this file multiple times will cause the terminal to randomly crash... see https://github.com/zsh-users/zsh-autosuggestions/issues/84
-
-#PROMPT_GEOMETRY_COLORIZE_SYMBOL=true
-PROMPT_GEOMETRY_COLORIZE_ROOT=true
-GEOMETRY_PROMPT_PLUGINS=(exec_time git)
-
-# use oh-my-zsh
-#zplug sindresorhus/pure, use:pure.zsh, from:github, as:theme
-
-# Install plugins if there are plugins that have not been installed
-#if ! zplug check --verbose; then
-#    printf "Install? [y/N]:" 
-#    if read -q; then
-#        echo; zplug install
-#    fi
-#fi
-
-#gdate "+zplug plugins: %s.%N"
-# Then, source plugins and add commands to $PATH
-zplug load
-
-#gdate "+zplug load: %s.%N"
-
+#export SHELL=/usr/local/bin/zsh
 export PATH=$PATH:$HOME/.local/bin
+export NVM_DIR='/usr/local/opt/nvm'
+export JAVA_HOME='/nix/store/9b7hmi2vblg2zkgz96788rssldqmz6sc-zulu11.2.3-jdk11.0.1'
 
-#gdate "+export bin: %s.%N"
-# thefuck config
-#eval $(thefuck --alias)
+alias gpg-terminal='export PINENTRY_USER_DATA="USE_CURSES=1"'
 
-#gdate "+thefuck alias: %s.%N"
-setopt correct
-#gdate "+setopt correct: %s.%N"
-zstyle ':completion:::::' completer _complete _approximate
+###########################
+####### theme setup #######
+###########################
+prompt_geometry_colorize() {
+  echo "%F{$1}$2%f"
+}
 
-#gdate "+completion zstyle: %s.%N"
-# better shell history
+export GEOMETRY_INFO=''
+export PROMPT_GEOMETRY_COLORIZE_SYMBOL=true
+export PROMPT_GEOMETRY_COLORIZE_ROOT=true
+export PROMPT_GEOMETRY_RPROMPT_ASYNC=true
+export GEOMETRY_PROMPT_PLUGINS=(exec_time git)
+#if [ $SHLVL -gt 1 ]; then
+#  export GEOMETRY_SYMBOL_PROMPT="⬢"
+#  export GEOMETRY_SYMBOL_EXIT_VALUE="⬡"
+#  export GEOMETRY_PROMPT_PREFIX=$(prompt_geometry_colorize 240 " ⬢ nix-$name-$SHLVL \n")
+#fi
+#export PROMPT_GEOMETRY_RPROMPT_ASYNC=false
+
+#### Added by Zplugin's installer
+source "$HOME/.zplugin/bin/zplugin.zsh"
+autoload -Uz _zplugin
+(( ${+_comps} )) && _comps[zplugin]=_zplugin
+#### End of Zplugin installer's chunk
+
+#############################
+####### zplugin setup #######
+#############################
+zplugin ice svn multisrc"{compfix,completion,directories,funct*,git,history,key-bindings,misc,spectrum,termsupport,theme*}.zsh" pick"/dev/null"
+zplugin snippet OMZ::lib
+##zplugin snippet OMZ::lib/clipboard.zsh
+##zplugin snippet OMZ::lib/correction.zsh
+##zplugin snippet OMZ::lib/diagnostics.zsh
+##zplugin snippet OMZ::lib/grep.zsh
+##zplugin snippet OMZ::lib/nvm.zsh
+##zplugin snippet OMZ::lib/prompt_info_functions.zsh
+zplugin snippet OMZ::plugins/git/git.plugin.zsh
+#zplugin ice svn multisrc"{*}" pick "/dev/null"
+#zplugin snippet OMZ::plugins/docker
+zplugin ice wait as"completion" lucid
+zplugin snippet OMZ::plugins/docker/_docker
+#zplugin snippet OMZ::plugins/vi-mode
+#zplugin snippet OMZ::plugins/heroku
+#zplugin snippet OMZ::plugins/pip
+#zplugin snippet OMZ::plugins/command-not-found
+#zplugin ice svn pick "z.sh"
+zplugin load rupa/z
+#zplugin load djui/alias-tips
+zplugin load mafredri/zsh-async
+#zplugin load zsh-users/zsh-history-substring-search
+zplugin load zsh-users/zsh-autosuggestions
+zplugin load zsh-users/zsh-syntax-highlighting
+zplugin load spwhitt/nix-zsh-completions
+zplugin load geometry-zsh/geometry
+
+
+####################################
+####### better shell history #######
+####################################
 export HISTFILE=~/.zsh_history           # ensure history file visibility
 export HISTSIZE=10000000
 export SAVEHIST=10000000
@@ -86,27 +76,55 @@ setopt HIST_EXPIRE_DUPS_FIRST
 setopt HIST_IGNORE_ALL_DUPS
 setopt hist_ignore_space
 
+setopt extended_history       # record timestamp of command in HISTFILE
+setopt hist_verify            # show command with history expansion to user before running it
+setopt share_history          # share command history data
+
 export HH_CONFIG=hicolor,keywords,rawhistory        # get more colors, use keyword mode
 bindkey -s "\C-r" "\eqhh\n"              # bind hh to Ctrl-r (for Vi mode check doc)
 
-#gdate "+My stuff: %s.%N"
+###########################
+####### other stuff #######
+###########################
 # iterm2 shell integration
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 # custom aliases
 source ~/.bash_aliases
 
 # nvm setup
-# REALLY SLOW (800ms)
-#. "/usr/local/opt/nvm/nvm.sh"
 alias nvmsetup=". /usr/local/opt/nvm/nvm.sh"
+nvm() {
+  if [[ -d '/usr/local/opt/nvm' ]]; then
+    NVM_DIR="/usr/local/opt/nvm"
+    export NVM_DIR
+    # shellcheck disable=SC1090
+    source "${NVM_DIR}/nvm.sh"
+    if [[ -e ~/.nvm/alias/default ]]; then
+      PATH="${PATH}:${HOME}.nvm/versions/node/$(cat ~/.nvm/alias/default)/bin"
+    fi
+    # invoke the real nvm function now
+    nvm "$@"
+  else
+    echo "nvm is not installed" >&2
+    return 1
+  fi
+}
+
+
+#[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+alias rvmsetup='source $HOME/.rvm/scripts/rvm'
+
+source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc'
+source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc'
 
 # protobuf setup
-export PATH="/usr/local/opt/protobuf@2.6/bin:$PATH"
+#export PATH="/usr/local/opt/protobuf@2.6/bin:$PATH"
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
 
-#gdate "+zshrc end%s.%N"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+#[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+
