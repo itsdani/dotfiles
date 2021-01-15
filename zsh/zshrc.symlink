@@ -4,7 +4,13 @@
 #export SHELL=/usr/local/bin/zsh
 export PATH=$PATH:$HOME/.local/bin
 export NVM_DIR='/usr/local/opt/nvm'
-export JAVA_HOME='/nix/store/9b7hmi2vblg2zkgz96788rssldqmz6sc-zulu11.2.3-jdk11.0.1'
+#export JAVA_HOME='/nix/store/9b7hmi2vblg2zkgz96788rssldqmz6sc-zulu11.2.3-jdk11.0.1'
+export JAVA_HOME="${$(greadlink -e /Users/dsegesdi/.nix-profile/bin/java)%*/bin/java}"
+
+
+export RD_TOOLBOX_DIR=$HOME/work/rd-toolbox
+export DB_CONFIG_DIR=$HOME/work/segmentation-toolbox/dbconfigs
+export LDAP_USER='daniel.segesdi'
 
 alias gpg-terminal='export PINENTRY_USER_DATA="USE_CURSES=1"'
 

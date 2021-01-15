@@ -1,6 +1,9 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =4
-let g:netrw_dirhist_1='/usr/share/nvim/runtime'
-let g:netrw_dirhist_2='/home/robert/Projects/Rust/mal/make'
-let g:netrw_dirhist_3='/Users/dsegesdi/git/ofxstatement-kh/.git'
-let g:netrw_dirhist_4='/Users/dsegesdi/git/pure-tech/output'
+let g:netrw_dirhist_cnt =7
+let g:netrw_dirhist_1='/Users/dsegesdi/work/segmentation-monitoring-client/src'
+let g:netrw_dirhist_2='/Users/dsegesdi/work/segmentation-monitoring-client/src/services'
+let g:netrw_dirhist_3='/Users/dsegesdi/work/segmentation-monitoring-client/src'
+let g:netrw_dirhist_4='/Users/dsegesdi/work/segmentation-monitoring-client/src/components'
+let g:netrw_dirhist_5='/Users/dsegesdi/work/segmentation-monitoring-client/src'
+let g:netrw_dirhist_6='/Users/dsegesdi/work/segmentation-monitoring-client'
+let g:netrw_dirhist_7='/Users/dsegesdi/work'
