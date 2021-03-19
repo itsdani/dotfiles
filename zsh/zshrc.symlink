@@ -1,37 +1,9 @@
 # nix nix nix nix
-. /Users/dsegesdi/.nix-profile/etc/profile.d/nix.sh
+#. /Users/dsegesdi/.nix-profile/etc/profile.d/nix.sh
 
-#export SHELL=/usr/local/bin/zsh
 export PATH=$PATH:$HOME/.local/bin
 export NVM_DIR='/usr/local/opt/nvm'
-#export JAVA_HOME='/nix/store/9b7hmi2vblg2zkgz96788rssldqmz6sc-zulu11.2.3-jdk11.0.1'
-export JAVA_HOME="${$(greadlink -e /Users/dsegesdi/.nix-profile/bin/java)%*/bin/java}"
 
-
-export RD_TOOLBOX_DIR=$HOME/work/rd-toolbox
-export DB_CONFIG_DIR=$HOME/work/segmentation-toolbox/dbconfigs
-export LDAP_USER='daniel.segesdi'
-
-alias gpg-terminal='export PINENTRY_USER_DATA="USE_CURSES=1"'
-
-###########################
-####### theme setup #######
-###########################
-prompt_geometry_colorize() {
-  echo "%F{$1}$2%f"
-}
-
-export GEOMETRY_INFO=''
-export PROMPT_GEOMETRY_COLORIZE_SYMBOL=true
-export PROMPT_GEOMETRY_COLORIZE_ROOT=true
-export PROMPT_GEOMETRY_RPROMPT_ASYNC=true
-export GEOMETRY_PROMPT_PLUGINS=(exec_time git)
-#if [ $SHLVL -gt 1 ]; then
-#  export GEOMETRY_SYMBOL_PROMPT="⬢"
-#  export GEOMETRY_SYMBOL_EXIT_VALUE="⬡"
-#  export GEOMETRY_PROMPT_PREFIX=$(prompt_geometry_colorize 240 " ⬢ nix-$name-$SHLVL \n")
-#fi
-#export PROMPT_GEOMETRY_RPROMPT_ASYNC=false
 
 #### Added by Zplugin's installer
 source "$HOME/.zplugin/bin/zplugin.zsh"
@@ -44,31 +16,29 @@ autoload -Uz _zplugin
 #############################
 zplugin ice svn multisrc"{compfix,completion,directories,funct*,git,history,key-bindings,misc,spectrum,termsupport,theme*}.zsh" pick"/dev/null"
 zplugin snippet OMZ::lib
-##zplugin snippet OMZ::lib/clipboard.zsh
-##zplugin snippet OMZ::lib/correction.zsh
-##zplugin snippet OMZ::lib/diagnostics.zsh
-##zplugin snippet OMZ::lib/grep.zsh
-##zplugin snippet OMZ::lib/nvm.zsh
-##zplugin snippet OMZ::lib/prompt_info_functions.zsh
 zplugin snippet OMZ::plugins/git/git.plugin.zsh
-#zplugin ice svn multisrc"{*}" pick "/dev/null"
-#zplugin snippet OMZ::plugins/docker
 zplugin ice wait as"completion" lucid
 zplugin snippet OMZ::plugins/docker/_docker
-#zplugin snippet OMZ::plugins/vi-mode
-#zplugin snippet OMZ::plugins/heroku
 #zplugin snippet OMZ::plugins/pip
-#zplugin snippet OMZ::plugins/command-not-found
-#zplugin ice svn pick "z.sh"
 zplugin load rupa/z
-#zplugin load djui/alias-tips
 zplugin load mafredri/zsh-async
-#zplugin load zsh-users/zsh-history-substring-search
 zplugin load zsh-users/zsh-autosuggestions
 zplugin load zsh-users/zsh-syntax-highlighting
 zplugin load spwhitt/nix-zsh-completions
 zplugin load geometry-zsh/geometry
 
+###########################
+####### theme setup #######
+###########################
+prompt_geometry_colorize() {
+  echo "%F{$1}$2%f"
+}
+
+GEOMETRY_INFO=''
+PROMPT_GEOMETRY_COLORIZE_SYMBOL=true
+PROMPT_GEOMETRY_COLORIZE_ROOT=true
+PROMPT_GEOMETRY_RPROMPT_ASYNC=true
+GEOMETRY_PROMPT_PLUGINS=(exec_time git)
 
 ####################################
 ####### better shell history #######
@@ -93,12 +63,11 @@ bindkey -s "\C-r" "\eqhh\n"              # bind hh to Ctrl-r (for Vi mode check 
 ####### other stuff #######
 ###########################
 # iterm2 shell integration
-test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+#test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 # custom aliases
-source ~/.bash_aliases
+source ~/.aliases
 
 # nvm setup
-alias nvmsetup=". /usr/local/opt/nvm/nvm.sh"
 nvm() {
   if [[ -d '/usr/local/opt/nvm' ]]; then
     NVM_DIR="/usr/local/opt/nvm"
@@ -115,20 +84,6 @@ nvm() {
     return 1
   fi
 }
-
-
-#[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
-alias rvmsetup='source $HOME/.rvm/scripts/rvm'
-
-source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc'
-source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc'
-
-# protobuf setup
-#export PATH="/usr/local/opt/protobuf@2.6/bin:$PATH"
-
-# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
-export PATH="$PATH:$HOME/.rvm/bin"
-
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 #[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
