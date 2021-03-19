@@ -1,0 +1,5 @@
+alias ag='rg'
+alias client-run-dev='z client && make run-dev'
+alias server-run-dev='z server && make run-dev'
+alias gstm='git stash push -m'
+alias cono='z nova && code .'
